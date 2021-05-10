@@ -6,7 +6,8 @@ This project is a homework assignment to teach how to get Pycharm setup with Doc
 * [Video 1 - Assignment 1](https://youtu.be/QbMWNgrfAFg)
 * [Video 2 - Assignment 2](https://youtu.be/tylzleJDlkc)
 * [Video 3 - Assignment 3](https://youtu.be/5WBYxNZz8Zw)
-* [Video 4 - REST API Part 1](https://youtu.be/E1Xk5dk3Abc)  Note this is a general video I use for another class and is about the concept of REST API and is not specific to python.  The 3rd Video of this part is the specific for python
+* [Video 4 - REST API Part 1](https://youtu.be/E1Xk5dk3Abc)  
+  - Note this is a general video I use for another class and is about the concept of REST API and is not specific to python. The 3rd Video of this part is the specific for python
 * [Video 5 - REST API Part 2](https://youtu.be/LGNkFTE3DI8)
 * [Video 6 - Assignment 4 Project Video](https://youtu.be/bfAW4vOdz7Q)
 
