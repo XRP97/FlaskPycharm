@@ -22,22 +22,21 @@ def index():
     cursor = mysql.get_db().cursor()
     cursor.execute('SELECT * FROM tblCitiesImport')
     result = cursor.fetchall()
-    print(result)
     return render_template('index.html', title='Home', user=user, cities=result)
 
 
 @app.route('/view/<city_id>', methods=['GET'])
 def record_view(city_id):
     cursor = mysql.get_db().cursor()
-    cursor.execute('SELECT * FROM tblCitiesImport WHERE id= %s', city_id)
+    cursor.execute('SELECT * FROM tblCitiesImport WHERE fldID= %s', city_id)
     result = cursor.fetchall()
-    return render_template('view.html', title='View Form', city=result[0])
+    return render_template("view.html", title='View Form', city=result[0])
 
 
 @app.route('/edit/<int:city_id>', methods=['GET'])
 def form_edit_get(city_id):
     cursor = mysql.get_db().cursor()
-    cursor.execute('SELECT * FROM tblCitiesImport WHERE id= %s', city_id)
+    cursor.execute('SELECT * FROM tblCitiesImport WHERE fldID= %s', city_id)
     result = cursor.fetchall()
     return render_template('edit.html', title='Edit Form', city=result[0])
 
@@ -49,7 +48,7 @@ def form_update_post(city_id):
                  request.form.get('fldCountry'), request.form.get('fldAbbreviation'),
                  request.form.get('fldCapitalStatus'), request.form.get('fldPopulation'), city_id)
     sql_update_query = """UPDATE tblCitiesImport t SET t.fldName = %s, t.fldLat = %s, t.fldLong = %s, t.fldCountry = 
-    %s, t.fldAbbreviation = %s, t.fldCapitalStatus = %s, t.fldPopulation = %s WHERE t.id=%s """
+    %s, t.fldAbbreviation = %s, t.fldCapitalStatus = %s, t.fldPopulation = %s WHERE t.fldID=%s """
     cursor.execute(sql_update_query, inputData)
     mysql.get_db().commit()
     return redirect("/", code=302)
@@ -74,7 +73,7 @@ def form_insert_post():
 @app.route('/delete/<int:city_id>', methods=['POST'])
 def form_delete_post(city_id):
     cursor = mysql.get_db().cursor()
-    sql_delete_query = """DELETE FROM tblCitiesImport WHERE id= %s """
+    sql_delete_query = """DELETE FROM tblCitiesImport WHERE fldID= %s """
     cursor.execute(sql_delete_query, city_id)
     mysql.get_db().commit()
     return redirect("/", code=302)
@@ -93,7 +92,7 @@ def api_browse() -> str:
 @app.route('/api/v1/cities/<int:city_id>', methods=['GET'])
 def api_retrieve(city_id) -> str:
     cursor = mysql.get_db().cursor()
-    cursor.execute('SELECT * FROM tblCitiesImport WHERE id= %s', city_id)
+    cursor.execute('SELECT * FROM tblCitiesImport WHERE fldID= %s', city_id)
     result = cursor.fetchall()
     json_result = json.dumps(result)
     resp = Response(json_result, status=200, mimetype='application/json')

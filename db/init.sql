@@ -2,13 +2,15 @@ CREATE DATABASE citiesData;
 use citiesData;
 
 CREATE TABLE IF NOT EXISTS tblCitiesImport (
-    `fldName` VARCHAR(21) CHARACTER SET utf8,
-    `fldLat` NUMERIC(6, 4),
-    `fldLong` NUMERIC(7, 4),
-    `fldCountry` VARCHAR(19) CHARACTER SET utf8,
-    `fldAbbreviation` VARCHAR(3) CHARACTER SET utf8,
-    `fldCapitalStatus` VARCHAR(7) CHARACTER SET utf8,
-    `fldPopulation` INT
+    fldID INT NOT NULL AUTO_INCREMENT,
+    fldName VARCHAR(21) CHARACTER SET utf8,
+    fldLat NUMERIC(6, 4),
+    fldLong NUMERIC(7, 4),
+    fldCountry VARCHAR(19) CHARACTER SET utf8,
+    fldAbbreviation VARCHAR(3) CHARACTER SET utf8,
+    fldCapitalStatus VARCHAR(7) CHARACTER SET utf8,
+    fldPopulation INT,
+    PRIMARY KEY (fldID)
 );
 INSERT INTO tblCitiesImport VALUES
     ('Tokyo',35.685,139.7514,'Japan','JPN','primary',35676000),
